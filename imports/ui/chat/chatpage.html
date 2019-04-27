@@ -1,0 +1,71 @@
+<template name='chatpage'>
+    <div class='sidebar'>
+        <div class='server-bar'>
+            {{#each servers}}
+            {{> server}}
+            {{/each}}
+            <div class='btn-new-server'><p>+</p></div>
+        </div>
+        <div class='channel-bar'>
+            <div class='channel-heading'>
+                <p>{{currentServer}}</p>
+                <button class="btn-edit-server">
+                    <i class="mdi mdi-pencil"></i> 
+                    <span class="popup" id="edit-server-popup">
+                        <label for="new-servername">Server Name:</label>
+                        <input type='text' name='new-servername' autocomplete="off" placeholder="{{currentServer}}">
+                    </span>
+                </button>
+                <button class="btn-add-channel">
+                    +
+                    <span class="popup" id="edit-channel-popup">
+                            <label for="new-channel">Channel Name:</label>
+                            <input type='text' name='new-channel' autocomplete="off" placeholder="New Channel">
+                    </span>
+                </button>
+            </div>
+            {{#each channels}}
+            {{> channel}}
+            {{/each}}
+        </div>
+    </div>
+
+    <div class='menubar'>
+
+    </div>
+
+    <div class='main-chat'>
+        <div class='chat-heading'>
+            <i class="mdi mdi-message"></i><p>{{currentChannel}}</p>
+        </div>
+        <div class='chat-body'>
+
+            <ul class='media-list'>
+                <!-- message template -->
+                {{#each messages}}
+                {{>message}}
+                {{/each}}
+            </ul>
+
+        </div>
+        <div class='chat-footer'>
+            {{#if currentUser}}
+            <form class='new-message'>
+                <input type='text' name='text' class='form-control' placeholder='Enter Message' autocomplete="off" />
+                <button type='submit' name='submit' class='submit-btn'>Send</button>
+            </form>
+            {{/if}}
+        </div>
+    </div>
+
+    <!--OPEN WHEN CREATING SERVER TO PICK NAME-->
+    <div class="new-server-overlay">
+        <div class="new-server-card">
+            <form class="new-server">
+                <label for="servername">Server Name:</label>
+                <input type="text" name="servername" class="servername" autocomplete="off" placeholder="Your Server">
+                <button type="submit" name="submit-server" class="submit-server">Create</button>
+            </form>
+        </div>
+    </div>
+</template>

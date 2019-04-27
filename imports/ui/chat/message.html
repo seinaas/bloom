@@ -1,0 +1,14 @@
+<template name='message'>
+    <li class='message'>
+        <div class='message-box'>
+            <div class="message-head">
+                <img class='profile-pic' src='https://lorempixel.com/60/60/' />
+                <small class='text-muted message-data'><strong class="message-username">{{username}}</strong> | {{createdAt}} </small>
+            </div>
+
+            <div class='message-body' >
+                {{text}}
+            </div>
+        </div>
+    </li>
+</template>

@@ -1,0 +1,524 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.panel-body {
+    overflow-y:scroll;
+    height:60vh;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    background:none;
+}
+
+/*PRIMARY: #ff0045*/
+
+/*----------------------------------------------------------*/
+/*------------------------SCROLLBAR-------------------------*/
+/*----------------------------------------------------------*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #3b3b3b; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #292929; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #191919; 
+}
+
+/*----------------------------------------------------------*/
+/*--------------------------POPUP---------------------------*/
+/*----------------------------------------------------------*/
+
+.popup {
+    position: relative;
+    display: inline-block;
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 100;
+    top: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+.popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.popup.show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+/*----------------------------------------------------------*/
+/*------------------LOGIN/SIGNUP PAGE-----------------------*/
+/*----------------------------------------------------------*/
+
+.login-bg {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ff0045;
+}
+
+.login-container {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+}
+
+.at-form .at-title h3 {
+    margin: 0;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 300%;
+}
+
+.login-form-card {
+    margin: auto;
+    width: 520px;
+}
+
+.at-pwd-form #at-pwd-form {
+    box-sizing: border-box;
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+}
+
+.at-pwd-form #at-pwd-form .at-btn {
+    border: none;
+    margin-top: 20px;
+    background-color: #ff0045;
+    padding: 10px 30px;
+    border-radius: 99999px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.at-pwd-form #at-pwd-form .at-btn:hover {
+    transform: translate(0, -2%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.at-pwd-form #at-pwd-form .at-btn:active {
+    transform: translate(0, 2%);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.at-signin-link {
+    color: #555;
+}
+
+.logged-in {
+    color: white;
+    font-size: 400%;
+}
+
+a.goToChat{
+    display: inline-block;
+    color: #ff0045;
+    background-color: white;
+    font-size: 200%;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 9999px;
+    margin-top: 10px;
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+a.goToChat:hover {
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+    transform: translate(0, -5%);
+}
+
+/*----------------------------------------------------------*/
+/*-----------------------MESSAGES---------------------------*/
+/*----------------------------------------------------------*/
+
+.message {
+    padding: 20px;
+    position: relative;
+    
+}
+
+.profile-pic {
+    border-radius: 50%;
+    margin: 10px 20px 0 20px;
+    height: 60px;
+}
+
+.text-muted {
+    
+}
+
+.message-body {
+    display: inline-block;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: auto;
+    padding: 20px;
+}
+
+.message-username {
+    color: white;
+    font-size: 120%;
+}
+
+.message-data {
+    transform: translate(0, 20px);
+}
+
+.message:nth-of-type(odd) {
+    background-color: #333;
+}
+
+.message:nth-of-type(even) {
+    background-color: rgb(61, 61, 61);
+}
+
+/*----------------------------------------------------------*/
+/*------------------------SERVERS---------------------------*/
+/*----------------------------------------------------------*/
+
+.server-bar {
+    flex: 0 1 35%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.server {
+    width: 100%;
+    padding: 18px;
+    padding-bottom: 0;
+    text-align: center;
+}
+
+.server img {
+    height: 60px;
+    border-radius: 50%;
+}
+
+.server-name {
+    color: white;
+}
+
+
+.selected-server {
+    background-color: rgb(100, 100, 100);
+}
+
+/*------------------------NEW SERVER------------------------*/
+
+.btn-new-server {
+    display: table;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 10px;
+
+    font-size: 250%;
+    border-radius: 50%;
+    background-color: #ff0045;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.btn-new-server p {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+    bottom: 0;
+}
+
+.btn-new-server:hover {
+    cursor: pointer;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+    transform: translate(0, -2px);
+}
+
+.new-server-overlay {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.new-server-overlay.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.new-server-card {
+    position: absolute;
+    height: 400px;
+    width: 520px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+
+    
+}
+
+.new-server-card form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/*----------------------------------------------------------*/
+/*-----------------------CHANNELS---------------------------*/
+/*----------------------------------------------------------*/
+
+.channel-bar {
+    flex: 0 1 65%;
+}
+
+/*------------------------HEADING---------------------------*/
+.channel-heading {
+    position: relative;
+    box-sizing: border-box;
+    color: white;
+    background-color: #ff0045;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 4px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.channel-heading:hover > .btn-edit-server,
+.channel-heading:hover > .btn-add-channel {
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.channel-heading p {
+    font-weight: 700;
+    position: absolute;
+    display: inline-block;
+    margin: 0;
+    margin-top: 2px;
+}
+
+.channel {
+    background-size: 0 100%;
+    padding: 10px;
+    list-style: none;
+    color: white;
+}
+
+.channel:hover {
+    cursor:pointer;
+}
+
+.selected-channel {
+    background: linear-gradient(to right, rgb(100,100,100), rgb(100,100,100));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: background-size 0.2s 0s;
+}
+
+.btn-edit-server {
+    font-size: 150%;
+    color: white;
+    position: absolute;
+    right: 40px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.btn-add-channel {
+    font-size: 150%;
+    font-weight: 700;
+    color: white;
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/*----------------------------------------------------------*/
+/*-----------------------CHAT PAGE--------------------------*/
+/*----------------------------------------------------------*/
+
+.chat {
+    display: flex;
+    flex-flow: row;
+    align-items: stretch;
+    height: 100vh;
+    position: relative;
+}
+
+
+/*----------------------SIDEBAR (LEFT)----------------------*/
+
+.sidebar {
+    display:flex;
+    flex-flow: row;
+    flex: 0 1 25%;
+    width: 300px;
+    background-color: #555555;
+    height: 100vh;
+    float: left;
+    
+}
+
+/*----------------------MENUBAR (RIGHT)----------------------*/
+
+.menubar {
+    flex: 0 1 15%;
+    width: 50px;
+    background-color: #555555;
+    color: white;
+    height: 100vh;
+    float: right;
+}
+
+/*---------------------MAIN CHAT (CENTER)---------------------*/
+
+.main-chat {
+    flex: 1 0 auto;
+    box-sizing: border-box;
+    background-color: #444444;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+}
+
+.chat-heading {
+    position: relative;
+    box-sizing: border-box;
+    color: white;
+    background-color: #ff0045;
+    height: 50px;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid white;
+    box-shadow: 4px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chat-heading .mdi {
+    display: inline-block;
+    font-size: 120%;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.chat-heading p {
+    font-weight: 700;
+    position: absolute;
+    display: inline-block;
+    margin: 0;
+    margin-top: 2px;
+}
+
+.chat-body {
+    color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 85%;
+}
+
+.chat-footer {
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+.new-message {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.chat-footer input[type=text] {
+    color: white;
+    flex: 1 0 auto;
+    vertical-align: middle;
+    width: 85%;
+}
+.chat-footer button {
+    flex: 1 1 auto;
+}
+
+.submit-btn{
+    border: none;
+    padding: 6px 12px;
+    background-color: #ff0045;
+    border-radius: 0 9999px 9999px 0;
+}
