@@ -16,7 +16,7 @@ autoScrollingIsActive = false;
 if (Meteor.isClient) {
     var channelName;
     if (!Meteor.user()) {
-        FlowRouter.go('/signup');
+        FlowRouter.go('/signup/');
     }
 
     Template.chatpage.helpers({
