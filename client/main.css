@@ -414,6 +414,16 @@ a.goToChat:hover {
 }
 
 /*----------------------------------------------------------*/
+/*-------------------------MENU-----------------------------*/
+/*----------------------------------------------------------*/
+
+.btn-menu {
+    color: white;
+    margin: 8px;
+    font-size: 170%;
+}
+
+/*----------------------------------------------------------*/
 /*-----------------------CHAT PAGE--------------------------*/
 /*----------------------------------------------------------*/
 
@@ -431,7 +441,7 @@ a.goToChat:hover {
 .sidebar {
     display:flex;
     flex-flow: row;
-    flex: 0 1 25%;
+    flex: 0 1 auto;
     width: 300px;
     background-color: #555555;
     height: 100vh;
@@ -442,12 +452,18 @@ a.goToChat:hover {
 /*----------------------MENUBAR (RIGHT)----------------------*/
 
 .menubar {
-    flex: 0 1 15%;
+    flex: 0 1 auto;
     width: 50px;
     background-color: #555555;
     color: white;
     height: 100vh;
     float: right;
+    overflow: hidden;
+    transition: width 0.3s;
+}
+
+.menubar.menu-extended {
+    width: 250px;
 }
 
 /*---------------------MAIN CHAT (CENTER)---------------------*/
@@ -521,6 +537,7 @@ a.goToChat:hover {
 }
 
 .submit-btn{
+    color: white;
     border: none;
     padding: 6px 12px;
     background-color: #ff0045;

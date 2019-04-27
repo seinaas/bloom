@@ -88,6 +88,7 @@ if (Meteor.isClient) {
             var atBottom = scrollBottom > (scrollHeight - howClose);
             autoScrollingIsActive = atBottom ? true : false;
         },
+        //SERVER
         'click .btn-new-server': function (e) {
             let element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.toggle('visible');
@@ -133,6 +134,7 @@ if (Meteor.isClient) {
             var popup = document.getElementById('edit-server-popup');
             popup.classList.remove('show');
         },
+        //CHANNEL
         'click .btn-add-channel': function(e) {
             var popup = document.getElementById('edit-channel-popup');
             popup.classList.add("show");
@@ -140,6 +142,11 @@ if (Meteor.isClient) {
         'mouseleave .btn-add-channel': function(e) {
             var popup = document.getElementById('edit-channel-popup');
             popup.classList.remove('show');
+        },
+        //MENU
+        'click .btn-menu': function(e) {
+            var menubar = document.getElementsByClassName('menubar')[0];
+            menubar.classList.toggle("menu-extended");
         },
     });
 
