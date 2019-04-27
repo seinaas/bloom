@@ -14,7 +14,7 @@ import './server.js';
 autoScrollingIsActive = false;
 
 if (Meteor.isClient) {
-
+    var channelName;
     if (!Meteor.user()) {
         FlowRouter.go('/signup');
     }
@@ -46,10 +46,11 @@ if (Meteor.isClient) {
         currentChannel() {
             if (Channels.find({}).fetch().length > 0) {
                 let channel = Channels.findOne({_id: Session.get("channel")});
-                let name = channel.name;
-                return name;
+                if (typeof channel !== "undefined") {
+                    channelName = channel.name;
+                }
             }
-            return 'Default'
+            return channelName;
         }
     });
 
@@ -93,7 +94,6 @@ if (Meteor.isClient) {
         },
         'click .new-server-overlay': function (e) {
             element = document.getElementsByClassName("new-server-overlay")[0];
-            console.log(element);
             $('.new-server-card').on('click', function(){
                 event.stopPropagation();
                 return
