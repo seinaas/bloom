@@ -92,13 +92,15 @@ if (Meteor.isClient) {
             let element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.toggle('visible');
         },
+        'click .mdi.mdi-close.close-new-server-card': function (e) {
+            console.log('ok');
+            element = document.getElementsByClassName("new-server-overlay")[0];
+            element.classList.toggle('visible');
+            e.stopImmediatePropagation();
+        },
         'click .new-server-overlay': function (e) {
             element = document.getElementsByClassName("new-server-overlay")[0];
-            $('.new-server-card').on('click', function(){
-                event.stopPropagation();
-                return
-            })
-            element.classList.toggle('visible');
+            element.classList.add('visible');
         },
         'submit .new-server': function (event) {
             event.preventDefault();
