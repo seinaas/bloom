@@ -358,7 +358,7 @@ a.goToChat:hover {
 }
 
 .channel-heading:hover > .btn-edit-server,
-.channel-heading:hover > .btn-add-channel {
+.channel-heading:hover > .btn-new-channel {
     opacity: 1;
     transition: opacity 0.2s;
 }
@@ -402,7 +402,7 @@ a.goToChat:hover {
     transition: opacity 0.2s;
 }
 
-.btn-add-channel {
+.btn-new-channel {
     font-size: 150%;
     font-weight: 700;
     color: white;
