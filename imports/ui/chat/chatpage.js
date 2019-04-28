@@ -55,11 +55,11 @@ if (Meteor.isClient) {
     });
 
     Template.chatpage.events({
-        'submit .new-message'(event) {
+        'submit .new-message'(e) {
             //Prevent default browser form submit
-            event.preventDefault();
+            e.preventDefault();
             //Get value from form element
-            const target = event.target;
+            const target = e.target;
             const text = target.text.value;
 
             if (text != "") {
@@ -103,8 +103,8 @@ if (Meteor.isClient) {
             element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.add('visible');
         },
-        'submit .new-server': function (event) {
-            event.preventDefault();
+        'submit .new-server': function (e) {
+            e.preventDefault();
 
             const text = document.getElementsByClassName('servername')[0].value;
 
@@ -123,7 +123,6 @@ if (Meteor.isClient) {
             }
 
             let element = document.getElementsByClassName("new-server-overlay")[0];
-            element.classList.add('hidden');
             element.classList.remove('visible');
         },
         'click .btn-edit-server': function(e) {
@@ -135,13 +134,25 @@ if (Meteor.isClient) {
             popup.classList.remove('show');
         },
         //CHANNEL
-        'click .btn-add-channel': function(e) {
+        'click .btn-new-channel': function(e) {
             var popup = document.getElementById('edit-channel-popup');
             popup.classList.add("show");
         },
-        'mouseleave .btn-add-channel': function(e) {
+        'mouseleave .btn-new-channel': function(e) {
             var popup = document.getElementById('edit-channel-popup');
             popup.classList.remove('show');
+        },
+        'submit .new-channel': function(e) {
+            e.preventDefault();
+
+            const text = document.getElementsByClassName('new-channel-name')[0].value;
+            
+            if (text !== "") {
+                Channels.insert({
+                    name: text,
+                    server: Session.get('server'),
+                });
+            }
         },
         //MENU
         'click .btn-menu': function(e) {
