@@ -242,12 +242,18 @@ a.goToChat:hover {
 /*----------------------------------------------------------*/
 
 .server-bar {
-    flex: 0 1 35%;
+    flex: 0 0 35%;
+    width: 100px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
+.server-list {
+    margin: 0;
+}
+
 .server {
+    list-style: none;
     width: 100%;
     padding: 18px;
     padding-bottom: 0;
@@ -261,6 +267,13 @@ a.goToChat:hover {
 
 .server-name {
     color: white;
+    font-size: 80%;
+}
+
+.server-name p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -363,7 +376,7 @@ a.goToChat:hover {
     transition: opacity 0.2s;
 }
 
-.channel-heading p {
+.channel-heading-name {
     font-weight: 700;
     width: 55%;
     position: absolute;
@@ -375,17 +388,36 @@ a.goToChat:hover {
     text-overflow: ellipsis;
 }
 
+.channel-list {
+    margin: 0;
+
+}
+
 .channel {
+    width: 200px;
+    margin: 0;
     background-size: 0 100%;
     padding: 10px;
     list-style: none;
     color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .channel:hover {
     cursor:pointer;
 }
 
+.prefix {
+    position: absolute;
+}
+
+.channel-name {
+    margin: 0;
+    margin-left: 15px;
+    width: 120px;
+}
 .selected-channel {
     background: linear-gradient(to right, rgb(100,100,100), rgb(100,100,100));
     background-repeat: no-repeat;
@@ -468,6 +500,10 @@ a.goToChat:hover {
 
 /*---------------------MAIN CHAT (CENTER)---------------------*/
 
+.media-list {
+    margin: 0;
+}
+
 .main-chat {
     flex: 1 0 auto;
     box-sizing: border-box;
@@ -488,6 +524,10 @@ a.goToChat:hover {
     border-radius: 0 5px 5px 0;
     border-left: 1px solid white;
     box-shadow: 4px 2px 5px rgba(0, 0, 0, 0.2);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .chat-heading .mdi {

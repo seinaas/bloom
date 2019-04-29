@@ -1,14 +1,16 @@
 <template name='chatpage'>
     <div class='sidebar'>
         <div class='server-bar'>
+            <ul class='server-list'>
             {{#each servers}}
             {{> server}}
             {{/each}}
+            </ul>
             <div class='btn-new-server'><p>+</p></div>
         </div>
         <div class='channel-bar'>
             <div class='channel-heading'>
-                <p>{{currentServer}}</p>
+                <span class='channel-heading-name' title="{{currentServer}}">{{currentServer}}</span>
                 <button class="btn-edit-server">
                     <i class="mdi mdi-pencil"></i> 
                     <span class="popup" id="edit-server-popup">
@@ -27,9 +29,11 @@
                     </span>
                 </button>
             </div>
+            <ul class='channel-list'>
             {{#each channels}}
             {{> channel}}
             {{/each}}
+            </ul>
         </div>
     </div>
 
@@ -39,7 +43,7 @@
 
     <div class='main-chat'>
         <div class='chat-heading'>
-            <i class="mdi mdi-message"></i><p>{{currentChannel}}</p>
+            <i class="mdi mdi-message"></i><span class="chat-heading-name" title="{{currentChannel}}">{{currentChannel}}</span>
         </div>
         <div class='chat-body'>
 
