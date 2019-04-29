@@ -14,8 +14,6 @@ import './server.js';
 autoScrollingIsActive = false;
 
 if (Meteor.isClient) {
-    var channelName;
-    
     Template.chatpage.helpers({
         //helpers = {{helper-name}} --> html
         messages() {
@@ -44,10 +42,11 @@ if (Meteor.isClient) {
             if (Channels.find({}).fetch().length > 0) {
                 let channel = Channels.findOne({_id: Session.get("channel")});
                 if (typeof channel !== "undefined") {
-                    channelName = channel.name;
+                    Session.setPersistent('channelName', channel.name);
                 }
             }
-            return channelName;
+            
+            return Session.get('channelName');
         },
         inChannel() {
             if (!Channels.find({}).fetch()) {
@@ -97,7 +96,6 @@ if (Meteor.isClient) {
             element.classList.toggle('visible');
         },
         'click .mdi.mdi-close.close-new-server-card': function (e) {
-            console.log('ok');
             element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.toggle('visible');
             e.stopImmediatePropagation();
@@ -167,6 +165,8 @@ if (Meteor.isClient) {
         'click .btn-menu': function(e) {
             var menubar = document.getElementsByClassName('menubar')[0];
             menubar.classList.toggle("menu-extended");
+            var navicon = document.getElementById('nav-icon');
+            navicon.classList.toggle('open');
         },
     });
 
