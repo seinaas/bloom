@@ -136,15 +136,19 @@ if (Meteor.isClient) {
         },
         'mouseleave .btn-edit-server': function(e) {
             var popup = document.getElementById('edit-server-popup');
+            let popupText = document.getElementById('new-server-name');
+            popupText.value="";
             popup.classList.remove('show');
         },
         //CHANNEL
         'click .btn-new-channel': function(e) {
-            var popup = document.getElementById('edit-channel-popup');
+            let popup = document.getElementById('edit-channel-popup');
             popup.classList.add("show");
         },
         'mouseleave .btn-new-channel': function(e) {
-            var popup = document.getElementById('edit-channel-popup');
+            let popup = document.getElementById('edit-channel-popup');
+            let popupText = document.getElementById('new-channel-name');
+            popupText.value = "";
             popup.classList.remove('show');
         },
         'submit .new-channel': function(e) {
