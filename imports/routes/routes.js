@@ -1,5 +1,21 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
+function isNotLoggedIn(context, redirect) {
+    if (!Meteor.user() && !Meteor.loggingIn()) {
+        redirect('/signup');
+    }
+}
+
+function isLoggedIn(context, redirect) {
+    if (Meteor.user() || Meteor.loggingIn()) {
+        redirect('/');
+    }
+}
+
+FlowRouter.triggers.enter([isNotLoggedIn], {
+    except: ['login', 'signup']
+});
+
 FlowRouter.route('/', {
     name: 'chat',
     action() {
