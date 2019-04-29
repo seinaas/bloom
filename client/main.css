@@ -449,11 +449,81 @@ a.goToChat:hover {
 /*-------------------------MENU-----------------------------*/
 /*----------------------------------------------------------*/
 
-.btn-menu {
-    color: white;
-    margin: 8px;
-    font-size: 170%;
-}
+
+/*HAMBURGER ICON*/
+#nav-icon {
+    width: 24px;
+    height: 40px;
+    position: absolute;
+    margin: 12px;
+    right: 0;
+    z-index: 999;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  #nav-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+  }
+  
+
+#nav-icon span:nth-child(1) {
+    top: 2px;
+  }
+  
+  #nav-icon span:nth-child(2),#nav-icon span:nth-child(3) {
+    top: 10px;
+  }
+  
+  #nav-icon span:nth-child(4) {
+    top: 18px;
+  }
+  
+  #nav-icon.open span:nth-child(1) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+  
+  #nav-icon.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  #nav-icon.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  #nav-icon.open span:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+
+  #nav-icon.open {
+      right: 200px;
+  }
 
 /*----------------------------------------------------------*/
 /*-----------------------CHAT PAGE--------------------------*/
@@ -485,7 +555,7 @@ a.goToChat:hover {
 
 .menubar {
     flex: 0 1 auto;
-    width: 50px;
+    width: 0;
     background-color: #555555;
     color: white;
     height: 100vh;
@@ -496,6 +566,10 @@ a.goToChat:hover {
 
 .menubar.menu-extended {
     width: 200px;
+}
+
+.menubar.menu-extended > .btn-menu {
+    right: 200px;
 }
 
 /*---------------------MAIN CHAT (CENTER)---------------------*/
