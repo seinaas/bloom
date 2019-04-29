@@ -48,7 +48,13 @@ if (Meteor.isClient) {
                 }
             }
             return channelName;
-        }
+        },
+        inChannel() {
+            if (!Channels.find({}).fetch()) {
+                return false;
+            }
+            return true;
+        },
     });
 
     Template.chatpage.events({
@@ -112,6 +118,8 @@ if (Meteor.isClient) {
                 });
 
                 let server = Servers.findOne({name: text});
+
+                Session.setPersistent('server', server._id);
 
                 Channels.insert({
                     name: 'general',

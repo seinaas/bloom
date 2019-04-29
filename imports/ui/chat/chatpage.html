@@ -53,10 +53,12 @@
         </div>
         <div class='chat-footer'>
             {{#if currentUser}}
+            {{#if inChannel}}
             <form class='new-message'>
                 <input type='text' name='text' class='form-control' placeholder='Enter Message' autocomplete="off" />
                 <button type='submit' name='submit' class='submit-btn'>Send</button>
             </form>
+            {{/if}}
             {{/if}}
         </div>
     </div>
