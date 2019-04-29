@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import './login.html';
+import '../loggedin/logged-in.js'
 
 if (Meteor.isClient) {
     Template.login.events({
@@ -19,22 +20,12 @@ if (Meteor.isClient) {
                 Meteor.loginWithPassword(usernameVar,passwordVar);
             }
             
-            if (Meteor.user()) {
+            if (Meteor.userId()) {
                 FlowRouter.go('/');
             }
         },
-
-        'click .goToChat': function(event) {
-            if (Meteor.user()) {
-                FlowRouter.go('/');
-            }
-        }
-    });
-}
-
-
-if (Meteor.isServer) {
-    Meteor.startup(function() {
-
+        'click #at-signUp': function(event) {
+            FlowRouter.go('signup');
+        } 
     });
 }
