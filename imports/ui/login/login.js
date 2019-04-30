@@ -20,7 +20,7 @@ if (Meteor.isClient) {
                 Meteor.loginWithPassword(usernameVar,passwordVar);
             }
             
-            if (Meteor.userId()) {
+            if (Meteor.loggingIn()) {
                 FlowRouter.go('/');
             }
         },

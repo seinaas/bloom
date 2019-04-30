@@ -2,7 +2,7 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 function isNotLoggedIn(context, redirect) {
     if (!Meteor.user() && !Meteor.loggingIn()) {
-        redirect('/signup');
+        redirect('/login');
     }
 }
 
@@ -14,6 +14,10 @@ function isLoggedIn(context, redirect) {
 
 FlowRouter.triggers.enter([isNotLoggedIn], {
     except: ['login', 'signup']
+});
+
+FlowRouter.triggers.enter([isLoggedIn], {
+    only: ['login', 'signup']
 });
 
 FlowRouter.route('/', {

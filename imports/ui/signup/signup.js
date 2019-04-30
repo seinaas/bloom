@@ -8,7 +8,7 @@ if (Meteor.isClient) {
     Template.signup.events({
         'submit form': function(event) {
             event.preventDefault();
-            if (Meteor.user()) {
+            if (Meteor.loggingIn()) {
                 FlowRouter.go('/');
             }
         },
