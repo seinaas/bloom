@@ -5,6 +5,7 @@ html {
 
 body {
     font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
 
 .panel-body {
@@ -33,7 +34,7 @@ button:focus {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
 }
 
 /* Track */
@@ -328,11 +329,13 @@ a.goToChat:hover {
 
 .new-server-overlay.visible {
     visibility: visible;
+    z-index: 100;
     opacity: 1;
 }
 
 .new-server-card {
     position: absolute;
+    z-index: 101;
     height: 400px;
     width: 520px;
     top: 50%;
@@ -450,14 +453,14 @@ a.goToChat:hover {
 /*----------------------------------------------------------*/
 
 
-/*HAMBURGER ICON*/
+/*----------------------HAMUBURGER ICON---------------------*/
 #nav-icon {
     width: 24px;
     height: 40px;
     position: absolute;
     margin: 12px;
     right: 0;
-    z-index: 999;
+    z-index: 1;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -483,7 +486,7 @@ a.goToChat:hover {
   }
   
 
-#nav-icon span:nth-child(1) {
+    #nav-icon span:nth-child(1) {
     top: 2px;
   }
   
@@ -525,6 +528,21 @@ a.goToChat:hover {
       right: 200px;
   }
 
+/*----------------------LOUGOUT BUTTON----------------------*/
+
+.btn-logout {
+    color: white;
+    background-color: #ff0045;
+    font-weight: 400;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0;
+    width: 200px;
+    padding: 6px;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
 /*----------------------------------------------------------*/
 /*-----------------------CHAT PAGE--------------------------*/
 /*----------------------------------------------------------*/
@@ -561,7 +579,7 @@ a.goToChat:hover {
     height: 100vh;
     float: right;
     overflow: hidden;
-    transition: width 0.3s;
+    transition: 0.3s;
 }
 
 .menubar.menu-extended {

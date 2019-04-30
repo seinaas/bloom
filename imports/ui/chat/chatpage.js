@@ -168,6 +168,12 @@ if (Meteor.isClient) {
             var navicon = document.getElementById('nav-icon');
             navicon.classList.toggle('open');
         },
+        //LOGOUT
+        'click .btn-logout': function(e) {
+            e.preventDefault();
+            FlowRouter.go('login');
+            AccountsTemplates.logout();
+        }
     });
 
     Template.message.onRendered(function () {
