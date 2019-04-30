@@ -6,12 +6,6 @@ import '../loggedin/logged-in.js'
 
 if (Meteor.isClient) {
     Template.signup.events({
-        'submit form': function(event) {
-            event.preventDefault();
-            if (Meteor.loggingIn()) {
-                FlowRouter.go('/');
-            }
-        },
         'click #at-signIn': function(event) {
             FlowRouter.go('login');
         } 

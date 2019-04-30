@@ -21,7 +21,7 @@ AccountsTemplates.addField({
 
 AccountsTemplates.configure({
   onSubmitHook: ( error, state ) => {
-      if ( !error && state === 'signIn' ) {
+      if ( !error && state === 'signIn' || state === "signUp") {
           // login successful, route to index
           FlowRouter.go('/');
       }

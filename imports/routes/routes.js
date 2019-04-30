@@ -16,9 +16,9 @@ FlowRouter.triggers.enter([isNotLoggedIn], {
     except: ['login', 'signup']
 });
 
-FlowRouter.triggers.enter([isLoggedIn], {
+/*FlowRouter.triggers.enter([isLoggedIn], {
     only: ['login', 'signup']
-});
+});*/
 
 FlowRouter.route('/', {
     name: 'chat',
