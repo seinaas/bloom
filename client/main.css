@@ -452,6 +452,15 @@ a.goToChat:hover {
 /*-------------------------MENU-----------------------------*/
 /*----------------------------------------------------------*/
 
+.logo {
+    position:absolute;
+    width: 150px;
+    margin-left: 25px;
+    top: 25px;
+    padding: 20px;
+    border-radius: 50%;
+}
+
 
 /*----------------------HAMUBURGER ICON---------------------*/
 #nav-icon {
@@ -528,7 +537,7 @@ a.goToChat:hover {
       right: 200px;
   }
 
-/*----------------------LOUGOUT BUTTON----------------------*/
+/*----------------------LOGOUT BUTTON----------------------*/
 
 .btn-logout {
     color: white;
