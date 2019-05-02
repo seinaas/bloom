@@ -221,6 +221,24 @@ a.goToChat:hover {
     padding: 20px;
 }
 
+.message-box {
+    animation: 0.2s ease-out 0s 1 fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.message-text {
+    margin-left: 80px;
+    width: 900px;
+}
+
 .message-username {
     color: white;
     font-size: 120%;
@@ -231,11 +249,11 @@ a.goToChat:hover {
 }
 
 .message:nth-of-type(odd) {
-    background-color: #333;
+    background-color: #3d3d3d;
 }
 
 .message:nth-of-type(even) {
-    background-color: rgb(61, 61, 61);
+    background-color: #444;
 }
 
 /*----------------------------------------------------------*/
@@ -243,10 +261,12 @@ a.goToChat:hover {
 /*----------------------------------------------------------*/
 
 .server-bar {
+    background-color: #333;
     flex: 0 0 35%;
     width: 100px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+    border-radius: 0 10px 10px 0;
 }
 
 .server-list {
@@ -257,8 +277,19 @@ a.goToChat:hover {
     list-style: none;
     width: 100%;
     padding: 18px;
-    padding-bottom: 0;
+    padding-bottom: 6px;
     text-align: center;
+    border-radius: 10px;
+
+    transition: all 0.2s;
+}
+
+.server:hover {
+    cursor: pointer;
+}
+
+.selected-server {
+    background-color: #444;
 }
 
 .server img {
@@ -277,10 +308,6 @@ a.goToChat:hover {
     text-overflow: ellipsis;
 }
 
-
-.selected-server {
-    background-color: rgb(100, 100, 100);
-}
 
 /*------------------------NEW SERVER------------------------*/
 
@@ -452,13 +479,25 @@ a.goToChat:hover {
 /*-------------------------MENU-----------------------------*/
 /*----------------------------------------------------------*/
 
+.menu-logo {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
 .logo {
-    position:absolute;
-    width: 150px;
-    margin-left: 25px;
-    top: 25px;
-    padding: 20px;
-    border-radius: 50%;
+    width: 80px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.menu-logo-text {
+    position: absolute;
+    left: 95px;
+    top: 15px;
+    margin-bottom: 20px;
+    font-size: 150%;
 }
 
 
@@ -608,7 +647,7 @@ a.goToChat:hover {
 .main-chat {
     flex: 1 0 auto;
     box-sizing: border-box;
-    background-color: #444444;
+    background-color: #444;
     height: 100vh;
     overflow: hidden;
     position: relative;
@@ -648,14 +687,13 @@ a.goToChat:hover {
 
 .chat-body {
     color: white;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     height: 85%;
 }
 
 .chat-footer {
     position: absolute;
-    box-sizing: border-box;
     bottom: 0;
     width: 100%;
     padding: 20px;
