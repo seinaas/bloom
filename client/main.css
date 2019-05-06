@@ -99,7 +99,7 @@ button:focus {
 .popup.show {
     visibility: visible;
     -webkit-animation: fadeIn 0.1s;
-    animation: fadeIn 0.1s
+    animation: fadeIn 0.1s;
 }
 
 @-webkit-keyframes fadeIn {
@@ -110,16 +110,6 @@ button:focus {
         transform: scale(1);
     }
 }
-
-@keyframes fadeIn {
-    from {
-        transform: scale(0);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
 
 /*----------------------------------------------------------*/
 /*------------------LOGIN/SIGNUP PAGE-----------------------*/
@@ -390,12 +380,12 @@ a.goToChat:hover {
     border-radius: 20px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
     padding: 30px;
-    transition: transform 0.1s;
+    transition: transform 0.1s ease-in-out;
 }
 
 .new-server-overlay.visible > .new-server-card {
     transform: translate(-50%, -50%) scale(1);
-    transition: transform 0.1s linear 0.1s;
+    transition: transform 0.1s ease-in-out 0.1s;
 } 
 
 .new-server-card form {
@@ -744,7 +734,6 @@ a.goToChat:hover {
 }
 
 .chat-heading {
-    flex: 0 0 auto;
     position: relative;
     box-sizing: border-box;
     color: white;
@@ -775,18 +764,18 @@ a.goToChat:hover {
 }
 
 .chat-body {
-    flex: 0 1 auto;
+    flex: 1;
     color: white;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .chat-footer {
-    flex: 0 0 auto;
     position: relative;
     margin: 0;
     width: 100%;
     padding: 20px;
+    min-height: 90px;
 }
 
 .new-message {
