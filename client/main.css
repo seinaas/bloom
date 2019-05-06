@@ -368,13 +368,14 @@ a.goToChat:hover {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: visibility 0s linear 0.2s, opacity 0.2s;
 }
 
 .new-server-overlay.visible {
     visibility: visible;
     z-index: 100;
     opacity: 1;
+    transition: opacity 0.2s;
 }
 
 .new-server-card {
@@ -384,15 +385,65 @@ a.goToChat:hover {
     width: 520px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     background-color: #333;
     border-radius: 20px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    transition: transform 0.1s;
 }
+
+.new-server-overlay.visible > .new-server-card {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.1s linear 0.1s;
+} 
 
 .new-server-card form {
     width: 80%;
     margin: 0 auto;
+}
+
+.close-new-server-card {
+    color: white;
+    font-size: 200%;
+    float: right;
+    transition: color 0.2s;
+}
+
+.close-new-server-card:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.new-server {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.submit-server {
+    position: absolute;
+    color: #999;
+    font-weight: 400;
+    font-size: 120%;
+    background: none;
+    background-size: 0 100%;
+    border: 2px solid #999;
+    padding: 10px 28px;
+    border-radius: 999px;
+    right: -70px;
+    top: 200px;
+    transform: translate(-50%, 0);
+}
+
+.submit-server:hover {
+    color: white;
+    border-color: #ff0045;
+    background: linear-gradient(to right, #ff0045,#ff0045);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: background-size 0.2s 0s, color 0.2s, border 0.2s;
 }
 
 
