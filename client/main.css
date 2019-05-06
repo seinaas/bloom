@@ -713,6 +713,8 @@ a.goToChat:hover {
 }
 
 .main-chat {
+    display: flex;
+    flex-flow: column;
     flex: 1 0 auto;
     box-sizing: border-box;
     background-color: #444;
@@ -723,6 +725,7 @@ a.goToChat:hover {
 }
 
 .chat-heading {
+    flex: 0 0 auto;
     position: relative;
     box-sizing: border-box;
     color: white;
@@ -753,15 +756,16 @@ a.goToChat:hover {
 }
 
 .chat-body {
+    flex: 0 1 auto;
     color: white;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 85%;
 }
 
 .chat-footer {
-    position: absolute;
-    bottom: 0;
+    flex: 0 0 auto;
+    position: relative;
+    margin: 0;
     width: 100%;
     padding: 20px;
 }
