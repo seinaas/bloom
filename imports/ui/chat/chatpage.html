@@ -14,7 +14,7 @@
                 <button class="btn-edit-server">
                     <i class="mdi mdi-pencil"></i> 
                     <span class="popup" id="edit-server-popup">
-                        <label for="new-server-name">Server Name:</label>
+                        <label for="new-server-name">Nom du serveur:</label>
                         <input type='text' id='new-server-name' name='new-server-name' autocomplete="off" placeholder="{{currentServer}}">
                     </span>
                 </button>
@@ -22,7 +22,7 @@
                     +
                     <span class="popup" id="edit-channel-popup">
                         <form class="new-channel">
-                            <label for="new-channel-name">Channel Name:</label>
+                            <label for="new-channel-name">Nom du salon:</label>
                             <input type='text' id='new-channel-name' class="new-channel-name" name='new-channel-name' autocomplete="off" placeholder="New Channel">
                             <input type='submit' name='submit-new-channel' class="new-channel-name" text="Create">
                         </form>
@@ -45,7 +45,7 @@
     </div>
 
     <div class='menubar'>
-        <button class='btn-logout'>logout</button>
+        <button class='btn-logout'>déconnexion</button>
     </div>
 
     <div class='main-chat'>
@@ -67,7 +67,7 @@
             {{#if inChannel}}
             <form class='new-message'>
                 <input type='text' name='text' class='form-control' placeholder='Enter Message' autocomplete="off" />
-                <button type='submit' name='submit' class='submit-btn'>Send</button>
+                <button type='submit' name='submit' class='submit-btn'>Envoyer</button>
             </form>
             {{/if}}
             {{/if}}
