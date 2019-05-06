@@ -19,10 +19,6 @@ if (Meteor.isClient) {
             if (usernameVar != "") {
                 Meteor.loginWithPassword(usernameVar,passwordVar);
             }
-            
-            if (Meteor.loggingIn()) {
-                FlowRouter.go('/');
-            }
         },
         'click #at-signUp': function(event) {
             FlowRouter.go('signup');
