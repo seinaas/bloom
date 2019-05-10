@@ -647,6 +647,10 @@ a.goToChat:hover {
     transition: background-color 0.2s;
 }
 
+.btn-settings:focus {
+    background-color: #4d4d4d;
+}
+
 .btn-settings:hover {
     background-color: #444;
 }
@@ -812,4 +816,14 @@ a.goToChat:hover {
     border-radius: 999px;
     margin-right: 8px;
     width: 120px;
+
+    transition: transform 0.2s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.02);
+}
+
+.submit-btn:focus {
+    background-color: #ff0045;
 }

@@ -1,0 +1,64 @@
+<template name="settings">
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+            title="Close Modal">&times</span>
+        <form class="modal-content" action="/action_page.php">
+            <div class="container">
+                <h1>Mon Profil</h1>
+
+                <hr>
+
+                <div class="profile-pic">
+                    <img src="https://amp.businessinsider.com/images/5ac518b57a74af23008b4642-750-563.jpg"
+                        alt="Student">
+                    <div class="choose_profilepic">
+                        <span><i class="fas fa-camera"></i></span>
+                        <input name="Select File" type="file" name="profile-pic" accept="image/*" />
+                    </div>
+
+                </div>
+
+
+                <div class="usersInfo">
+
+                    <label for="username"><b>Nom d'Utilisateur</b></label>
+                    <input type="text" placeholder="nico_elgion" name="username" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="votreemail@gmail.com" name="email" required>
+
+                    <label for="psw"><b>Mot de passe</b></label>
+                    <input type="password" placeholder="------" name="psw" required>
+                    <button type="button" class="changePass">Changer Mot de Passe</button>
+
+
+                </div>
+
+                <div class="education">
+                    <label for="education"><b>Dites ce que vous étudiez et où</b></label>
+                    <input type="text" placeholder="Sciences Informatiques et Mathématiques à Bois-de-Boulogne."
+                        name="school" required>
+                </div>
+
+                <div class="schedule">
+                    <label for="schedule"><b>Votre Horaire</b></label>
+                    <img src="schedule.png" alt="Schedule">
+                    <div class="choose_schedule">
+                        <span>Modifier</span>
+                        <input name="Select File" type="file" name="schedule-pic" accept="image/*" />
+                    </div>
+
+                </div>
+
+
+                <div class="formbut">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                        class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signup">Confirmez</button>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</template>
