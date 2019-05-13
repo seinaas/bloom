@@ -20,6 +20,19 @@ AccountsTemplates.addField({
 });
 
 AccountsTemplates.configure({
+  texts: {
+    title: {
+      signIn: "Connexion",
+      signUp: "Créer un compte",
+    },
+    button: {
+      signIn: "Connexion",
+      signUp: "Créer",
+    }
+  }
+});
+
+AccountsTemplates.configure({
   onSubmitHook: ( error, state ) => {
       if ( !error && state === 'signIn' || state === "signUp") {
           // login successful, route to index
