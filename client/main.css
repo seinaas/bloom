@@ -143,7 +143,7 @@ button:focus {
     width: 520px;
 }
 
-.at-pwd-form #at-pwd-form {
+.pwd-form-card {
     box-sizing: border-box;
     background-color: white;
     padding: 50px;
@@ -174,6 +174,14 @@ button:focus {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
+.login-separator {
+    width: 520px;
+    border: none;
+    height: 1px;
+    background-color: rgb(221, 221, 221);
+    margin: 30px 0 30px -50px;
+}
+
 .at-signin-link {
     color: #555;
 }
@@ -199,6 +207,25 @@ a.goToChat {
 a.goToChat:hover {
     box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
     transform: translate(0, -5%);
+}
+
+/*--------------------SOCIAL BUTTON-------------------------*/
+
+.at-social-btn {
+    width: 200px;
+    margin: 18px 2px;
+    margin-bottom: 0;
+    padding: 16px;
+    border-radius: 3px;
+    background: none !important;
+    color: rgb(185, 185, 185) !important;
+    border: 1px solid rgb(221,221,221);
+}
+
+.at-social-btn i {
+    font-size: 120%;
+    margin-left: -7px;
+    margin-right: 5px;
 }
 
 
