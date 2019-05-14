@@ -2,7 +2,9 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import './login.html';
-import '../loggedin/logged-in.js'
+import '../loggedin/logged-in.js';
+import '../myAtForm/myAtForm.js';
+import '../myPwdForm/myPwdForm.js';
 
 if (Meteor.isClient) {
     Template.login.events({

@@ -10,6 +10,7 @@ import './chatpage.html';
 import './message.js';
 import './channel.js';
 import './server.js';
+import './settings.js';
 
 autoScrollingIsActive = false;
 

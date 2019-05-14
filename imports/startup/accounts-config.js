@@ -1,6 +1,5 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
-
 if (Meteor.isServer) {
   ServiceConfiguration.configurations.upsert(
     { service: 'google' },
@@ -34,7 +33,13 @@ AccountsTemplates.configure({
   negativeValidation: true,
   positiveValidation: true,
   negativeFeedback: false,
-  positiveFeedback: true
+  positiveFeedback: true,
+  texts: {
+    socialIcons: {
+      google: "mdi mdi-google",
+      facebook: 'mdi mdi-facebook'
+    }
+  }
 });
 
 AccountsTemplates.addField({
