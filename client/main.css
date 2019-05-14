@@ -215,8 +215,9 @@ a.goToChat:hover {
     width: 200px;
     margin: 18px 2px;
     margin-bottom: 0;
-    padding: 16px;
+    padding: 20px 10px;
     border-radius: 3px;
+    font-size: 95%;
     background: none !important;
     color: rgb(185, 185, 185) !important;
     border: 1px solid rgb(221,221,221);
@@ -718,7 +719,8 @@ a.goToChat:hover {
     flex-flow: row;
     flex: 0 1 auto;
     width: 300px;
-    background-color: #555555;
+    background-color: #444;
+    border-right: 1px solid rgb(80, 80, 80);
     height: 100vh;
     float: left;
 }
