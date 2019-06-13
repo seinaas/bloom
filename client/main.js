@@ -7,6 +7,7 @@ import '../imports/startup/subscribe.js';
 import '../imports/ui/chat/chatpage.js';
 import '../imports/ui/login/login.js';
 import '../imports/ui/signup/signup.js';
+import '../imports/ui/verify/verify.js';
 
 import '../imports/routes/routes.js';
 

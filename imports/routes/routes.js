@@ -41,6 +41,13 @@ FlowRouter.route('/signup', {
     }
 });
 
+FlowRouter.route('/verify', {
+    name: 'verify',
+    action() {
+        this.render('verify');
+    }
+})
+
 FlowRouter.route('*', {
   action() {
     // Show 404 error page
