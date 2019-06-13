@@ -1,11 +1,16 @@
 html {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+}
+
+* {
+    box-sizing: inherit;
 }
 
 .panel-body {
@@ -215,7 +220,8 @@ a.goToChat:hover {
     width: 200px;
     margin: 18px 2px;
     margin-bottom: 0;
-    padding: 16px;
+    padding: 20px 10px;
+    font-size: 95%;
     border-radius: 3px;
     background: none !important;
     color: rgb(185, 185, 185) !important;
@@ -300,7 +306,7 @@ a.goToChat:hover {
 .server-bar {
     background-color: #333;
     flex: 0 0 35%;
-    width: 100px;
+    max-width: 100px;
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: 0 10px 10px 0;
@@ -470,6 +476,7 @@ a.goToChat:hover {
 
 .channel-bar {
     flex: 0 1 65%;
+    width: 200px;
 }
 
 
@@ -477,7 +484,7 @@ a.goToChat:hover {
 
 .channel-heading {
     position: relative;
-    box-sizing: border-box;
+    border-right: 1px solid white;
     color: white;
     background-color: #ff0045;
     height: 50px;
@@ -718,9 +725,10 @@ a.goToChat:hover {
     flex-flow: row;
     flex: 0 1 auto;
     width: 300px;
-    background-color: #555555;
     height: 100vh;
     float: left;
+    background-color: #444;
+    border-right: 1px solid rgb(80, 80, 80);
 }
 
 
@@ -772,7 +780,6 @@ a.goToChat:hover {
     height: 50px;
     padding: 10px;
     border-radius: 0 5px 5px 0;
-    border-left: 1px solid white;
     box-shadow: 4px 2px 5px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
     overflow: hidden;
