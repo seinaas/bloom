@@ -48,6 +48,10 @@ FlowRouter.route('/verify', {
     }
 })
 
+FlowRouter.route('/verify/:token', {
+    name: ''
+})
+
 FlowRouter.route('*', {
   action() {
     // Show 404 error page
