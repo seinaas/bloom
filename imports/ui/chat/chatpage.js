@@ -33,20 +33,21 @@ if (Meteor.isClient) {
         },
         currentServer() {
             if (Servers.find({}).fetch().length > 0) {
-                let server = Servers.findOne({_id: Session.get("server")});
+                let server = Servers.findOne({ _id: Session.get("server") });
                 let name = server.name;
                 return name;
             }
             return "Default"
+
         },
         currentChannel() {
             if (Channels.find({}).fetch().length > 0) {
-                let channel = Channels.findOne({_id: Session.get("channel")});
+                let channel = Channels.findOne({ _id: Session.get("channel") });
                 if (typeof channel !== "undefined") {
                     Session.setPersistent('channelName', channel.name);
                 }
             }
-            
+
             return Session.get('channelName');
         },
         inChannel() {
@@ -105,14 +106,18 @@ if (Meteor.isClient) {
             e.preventDefault();
 
             const text = document.getElementsByClassName('servername')[0].value;
+            let userList = [Meteor.user()];
 
-            
             if (text != "") {
-                Servers.insert ({
+                Servers.insert({
                     name: text,
+                    userList: userList,
                 });
 
-                let server = Servers.findOne({name: text});
+                let server = Servers.findOne({ name: text });
+
+                Meteor.call('updateServer', server._id, (error,result) => {});
+                console.log(Meteor.user().servers);
 
                 Session.setPersistent('server', server._id);
 
@@ -120,37 +125,40 @@ if (Meteor.isClient) {
                     name: 'general',
                     server: server._id,
                 })
+
             }
+
+            
 
             let element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.remove('visible');
         },
-        'click .btn-edit-server': function(e) {
+        'click .btn-edit-server': function (e) {
             var popup = document.getElementById('edit-server-popup');
             popup.classList.add("show");
         },
-        'mouseleave .btn-edit-server': function(e) {
+        'mouseleave .btn-edit-server': function (e) {
             var popup = document.getElementById('edit-server-popup');
             let popupText = document.getElementById('new-server-name');
-            popupText.value="";
+            popupText.value = "";
             popup.classList.remove('show');
         },
         //CHANNEL
-        'click .btn-new-channel': function(e) {
+        'click .btn-new-channel': function (e) {
             let popup = document.getElementById('edit-channel-popup');
             popup.classList.add("show");
         },
-        'mouseleave .btn-new-channel': function(e) {
+        'mouseleave .btn-new-channel': function (e) {
             let popup = document.getElementById('edit-channel-popup');
             let popupText = document.getElementById('new-channel-name');
             popupText.value = "";
             popup.classList.remove('show');
         },
-        'submit .new-channel': function(e) {
+        'submit .new-channel': function (e) {
             e.preventDefault();
 
             const text = document.getElementsByClassName('new-channel-name')[0].value;
-            
+
             if (text !== "") {
                 Channels.insert({
                     name: text,
@@ -159,14 +167,14 @@ if (Meteor.isClient) {
             }
         },
         //MENU
-        'click .btn-menu': function(e) {
+        'click .btn-menu': function (e) {
             var menubar = document.getElementsByClassName('menubar')[0];
             menubar.classList.toggle("menu-extended");
             var navicon = document.getElementById('nav-icon');
             navicon.classList.toggle('open');
         },
         //LOGOUT
-        'click .btn-logout': function(e) {
+        'click .btn-logout': function (e) {
             e.preventDefault();
             FlowRouter.go('login');
             AccountsTemplates.logout();
