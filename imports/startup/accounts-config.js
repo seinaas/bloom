@@ -1,6 +1,7 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 if (Meteor.isServer) {
+
   process.env.MAIL_URL = "smtps://postmaster%40sandbox61d34bbb2c39493db05b974d93b23c5d.mailgun.org:a4e4a5a836ded2065e44bdd0065d06ba-16ffd509-7a42c361@smtp.mailgun.org:465";
 
   ServiceConfiguration.configurations.upsert(

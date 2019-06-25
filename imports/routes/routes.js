@@ -1,4 +1,5 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { Tracker } from 'meteor/tracker';
 
 function isNotLoggedIn(context, redirect) {
     if (!Meteor.user() && !Meteor.loggingIn()) {
@@ -8,19 +9,47 @@ function isNotLoggedIn(context, redirect) {
 
 function isLoggedIn(context, redirect) {
     if (Meteor.user() || Meteor.loggingIn()) {
-        redirect('/');
+        redirect('/chat');
     }
+}
+
+function isNotVerified(context, redirect) {
+    Tracker.autorun(() => {
+        if (typeof Meteor.user() !== 'undefined') {
+            if (!Meteor.user().emails[0].verified) {
+                FlowRouter.go('/verify');
+            }
+        }
+    });
+}
+
+function isVerified(context, redirect) {
+    Tracker.autorun(() => {
+        if (typeof Meteor.user() !== 'undefined') {
+            if (Meteor.user().emails[0].verified) {
+                FlowRouter.go('/chat');
+            }
+        }
+    });
 }
 
 FlowRouter.triggers.enter([isNotLoggedIn], {
     except: ['login', 'signup']
 });
 
+FlowRouter.triggers.enter([isNotVerified], {
+    only: ['chat']
+});
+
+FlowRouter.triggers.enter([isVerified], {
+    only: ['verify']
+});
+
 /*FlowRouter.triggers.enter([isLoggedIn], {
     only: ['login', 'signup']
 });*/
 
-FlowRouter.route('/', {
+FlowRouter.route('/chat', {
     name: 'chat',
     action() {
         this.render('chatpage');
@@ -48,13 +77,18 @@ FlowRouter.route('/verify', {
     }
 })
 
-FlowRouter.route('/verify/:token', {
-    name: ''
+FlowRouter.route('/verify-email/:token', {
+    name: 'verify-email',
+    action(params) {
+        Accounts.verifyEmail(params.token, (error) => {
+            FlowRouter.go('/chat');
+        })
+    }
 })
 
 FlowRouter.route('*', {
-  action() {
-    // Show 404 error page
-    this.render('message');
-  }
+    action() {
+        // Show 404 error page
+        this.render('message');
+    }
 });

@@ -187,9 +187,11 @@ button:focus {
     margin: 30px 0 30px -50px;
 }
 
-.at-signin-link {
-    color: #555;
+.at-signin-link,
+.at-signup-link {
+    color: white;
 }
+
 
 .logged-in {
     color: white;
@@ -234,6 +236,44 @@ a.goToChat:hover {
     margin-right: 5px;
 }
 
+/*----------------------------------------------------------*/
+/*---------------------VERIFICATION-------------------------*/
+/*----------------------------------------------------------*/
+
+.verify-bg {
+    width: 100vw;
+    height: 100vh;
+    padding: 200px;
+    background-color: #ff0045;
+    text-align: center;
+}
+
+.verify-bg h1 {
+    margin: 0;
+    color: white;
+    font-size: 420%;
+}
+
+.verify-bg h2 {
+    color: white;
+}
+
+.btn-send-verification {
+    display: inline-block;
+    color: #ff0045;
+    background-color: white;
+    font-size: 140%;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 9999px;
+    margin-top: 10px;
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.send-verify {
+    padding-right: 20px;
+}
 
 /*----------------------------------------------------------*/
 /*-----------------------MESSAGES---------------------------*/

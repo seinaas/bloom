@@ -7,7 +7,7 @@ if (Meteor.isClient) {
     Template.loggedin.events({
         'click .goToChat': function (event) {
             if (Meteor.user()) {
-                FlowRouter.go('/');
+                FlowRouter.go('chat');
             }
         },
     });
