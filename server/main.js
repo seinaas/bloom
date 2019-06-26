@@ -7,6 +7,7 @@ import './userAccount.js';
 //METHODS
 import './methods/send-verification.js';
 import './methods/update-server.js';
+import './methods/invite-user.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
