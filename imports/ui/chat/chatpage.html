@@ -2,38 +2,57 @@
     <div class='sidebar'>
         <div class='server-bar'>
             <ul class='server-list'>
-            {{#each servers}}
-            {{> server}}
-            {{/each}}
+                {{#each servers}}
+                {{> server}}
+                {{/each}}
             </ul>
-            <div class='btn-new-server'><p>+</p></div>
+            <div class='btn-new-server'>
+                <p>+</p>
+            </div>
         </div>
         <div class='channel-bar'>
             <div class='channel-heading'>
                 <span class='channel-heading-name' title="{{currentServer}}">{{currentServer}}</span>
+
                 <button class="btn-edit-server">
-                    <i class="mdi mdi-pencil"></i> 
+                    <i class="mdi mdi-pencil edit-server-popup-open"></i>
                     <span class="popup" id="edit-server-popup">
+                        <i class='mdi mdi-close popup-close'></i>
+                        
+                        <form class='edit-server-name'>
                         <label for="new-server-name">Server Name:</label>
-                        <input type='text' id='new-server-name' name='new-server-name' autocomplete="off" placeholder="{{currentServer}}">
+                        <input type='text' id='new-server-name' name='new-server-name' autocomplete="off"
+                            placeholder="{{currentServer}}">
+                        </form>
                     </span>
                 </button>
+
                 <button class="btn-new-channel">
-                    +
+                    <i class="mdi mdi-plus new-channel-popup-open"></i>
                     <span class="popup" id="edit-channel-popup">
+                        <i class='mdi mdi-close popup-close'></i>
+                               
                         <form class="new-channel">
                             <label for="new-channel-name">Channel Name:</label>
-                            <input type='text' id='new-channel-name' class="new-channel-name" name='new-channel-name' autocomplete="off" placeholder="New Channel">
+                            <input type='text' id='new-channel-name' class="new-channel-name" name='new-channel-name'
+                                autocomplete="off" placeholder="New Channel">
                             <input type='submit' name='submit-new-channel' class="new-channel-name" text="Create">
                         </form>
                     </span>
                 </button>
+
             </div>
             <ul class='channel-list'>
-            {{#each channels}}
-            {{> channel}}
-            {{/each}}
+                {{#each channels}}
+                {{> channel}}
+                {{/each}}
             </ul>
+
+            <form class="add-user">
+                    <input type='text' id='add-user-name' name='add-user-name'
+                        autocomplete="off" placeholder="New User">
+                    <input type='submit' name='submit-add-user-name' class="submit-add-user-name" text="Invite">
+            </form>
         </div>
     </div>
 
@@ -45,14 +64,28 @@
     </div>
 
     <div class='menubar'>
-        <span class="menu-logo"><img class="logo" src="images/bloom_logo.svg" alt="Bloom Logo"><h4 class="menu-logo-text">bloom.</h4></span>
+        <span class="menu-logo"><img class="logo" src="images/bloom_logo.svg" alt="Bloom Logo">
+            <h4 class="menu-logo-text">bloom.</h4>
+        </span>
         <button class='btn-settings'>settings</button>
         <button class='btn-logout'>logout</button>
     </div>
 
     <div class='main-chat'>
         <div class='chat-heading'>
-            <i class="mdi mdi-message"></i><span class="chat-heading-name" title="{{currentChannel}}">{{currentChannel}}</span>
+            <i class="mdi mdi-message chat-icon"></i><span class="chat-heading-name"
+                title="{{currentChannel}}">{{currentChannel}}</span>
+
+            <div class="notification-menu">
+                <button class='btn-notification-menu'>
+                    <i class='mdi mdi-bell notification-menu-popup-open'></i>
+
+                    <span class="popup" id="notification-menu-popup">
+                            <i class='mdi mdi-close popup-close'></i>
+                            
+                    </span>
+                </button>
+            </div>
         </div>
         <div class='chat-body'>
 

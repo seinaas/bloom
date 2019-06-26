@@ -59,6 +59,32 @@ if (Meteor.isClient) {
     });
 
     Template.chatpage.events({
+        //POPUP CLOSE
+        'click .popup-close'(e) {
+            console.log($(e.target).parent());
+            let popup = $(e.target).parent();
+            /*var popup = $(e.target).parent();
+            let popupText = document.getElementById('new-server-name');
+            popupText.value = "";
+            */
+           popup.removeClass('show');
+           console.log(e.target.classList);
+        },
+
+        /*TESTTESTTESTTEST*/
+        'submit .add-user'(e) {
+            //Prevent default browser form submit
+            e.preventDefault();
+            //Get value from form element
+
+            const username = document.getElementById('add-user-name').value;
+
+            if (username != "") {
+                let server = Session.get('server');
+                Meteor.call('inviteUser', username, server);
+            }
+        },
+        
         'submit .new-message'(e) {
             //Prevent default browser form submit
             e.preventDefault();
@@ -116,8 +142,7 @@ if (Meteor.isClient) {
 
                 let server = Servers.findOne({ name: text });
 
-                Meteor.call('updateServer', server._id, (error,result) => {});
-                console.log(Meteor.user().servers);
+                Meteor.call('updateServer', Meteor.userId(), server._id, (error,result) => {});
 
                 Session.setPersistent('server', server._id);
 
@@ -133,26 +158,28 @@ if (Meteor.isClient) {
             let element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.remove('visible');
         },
-        'click .btn-edit-server': function (e) {
+        'click .edit-server-popup-open': function (e) {
+            let openPopups = document.getElementsByClassName('show');
+            for (i=0;i<openPopups.length;i++) {
+                openPopups[i].classList.remove('show');
+            }
+
             var popup = document.getElementById('edit-server-popup');
             popup.classList.add("show");
         },
-        'mouseleave .btn-edit-server': function (e) {
-            var popup = document.getElementById('edit-server-popup');
-            let popupText = document.getElementById('new-server-name');
-            popupText.value = "";
-            popup.classList.remove('show');
+        'click .notification-menu-popup-open': function (e) {
+            var popup = document.getElementById('notification-menu-popup');
+            popup.classList.add("show");
         },
         //CHANNEL
-        'click .btn-new-channel': function (e) {
+        'click .new-channel-popup-open': function (e) {
+            let openPopups = document.getElementsByClassName('show');
+            for (i=0;i<openPopups.length;i++) {
+                openPopups[i].classList.remove('show');
+            }
+
             let popup = document.getElementById('edit-channel-popup');
             popup.classList.add("show");
-        },
-        'mouseleave .btn-new-channel': function (e) {
-            let popup = document.getElementById('edit-channel-popup');
-            let popupText = document.getElementById('new-channel-name');
-            popupText.value = "";
-            popup.classList.remove('show');
         },
         'submit .new-channel': function (e) {
             e.preventDefault();
@@ -164,6 +191,12 @@ if (Meteor.isClient) {
                     name: text,
                     server: Session.get('server'),
                 });
+            }
+        },
+        'mouseleave .channel-heading': function(e) {
+            let openPopups = document.querySelectorAll('.channel-heading, .show');
+            for (i=0;i<openPopups.length;i++) {
+                openPopups[i].classList.remove('show');
             }
         },
         //MENU
