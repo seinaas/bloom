@@ -1,7 +1,6 @@
 import { Channels } from '../imports/api/channels';
 import { Messages } from '../imports/api/messages';
 import { Servers } from '../imports/api/servers';
-import { ReactiveVar } from 'meteor/reactive-var'
 
 Meteor.startup(function () {
     //Publish channels

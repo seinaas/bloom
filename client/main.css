@@ -31,10 +31,6 @@ button:focus {
     background: none;
 }
 
-.mdi {
-    color: white;
-}
-
 /*PRIMARY: #ff0045*/
 
 
@@ -119,6 +115,10 @@ button:focus {
 
 #notification-menu-popup:after {
     left: 90%;
+}
+
+.notification-menu-popup-open {
+    color: white;
 }
 
 @-webkit-keyframes fadeIn {

@@ -31,3 +31,4 @@ accounts-google
 service-configuration
 email
 peerlibrary:reactive-publish@=0.3.0
+ostrio:files
