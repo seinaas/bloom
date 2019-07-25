@@ -1,6 +1,5 @@
 
 import { Template } from 'meteor/templating';
-import { Tracker } from 'meteor/tracker';
 import { Messages } from '../../api/messages.js';
 import { Channels } from '../../api/channels.js';
 import { Servers } from '../../api/servers.js';

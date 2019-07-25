@@ -1,21 +1,26 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+
 import './message.html';
 
-
+import linkifyStr from 'linkifyjs/string';
 
 Template.message.helpers({
     displayPicture() {
         var image = Template.instance().image.get();
         console.log(image);
         return image;
+    },
+    message() {
+        const str = this.text;
+        const finalText = linkifyStr(str, {className: 'link'});
+        return finalText;
     }
 });
 
 
-//Runs when message is created
+
 Template.message.onCreated(function () {
-    var self = this;
     //creates reactive var to load profile image
     self.image = new ReactiveVar('Waiting for response from server...');
     //See server > methods
@@ -27,3 +32,5 @@ Template.message.onCreated(function () {
         }
     })
 });
+
+

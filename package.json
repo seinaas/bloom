@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5",
+    "linkifyjs": "^2.1.8",
     "meteor-node-stubs": "^0.4.1"
   },
   "meteor": {
