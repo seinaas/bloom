@@ -1,6 +1,7 @@
 Accounts.emailTemplates.siteName = "bloom";
 Accounts.emailTemplates.from     = "bloom <admin@bloom.me>";
 
+//email verification template
 Accounts.emailTemplates.verifyEmail = {
   subject() {
     return "[bloom] Verify Your Email Address";
