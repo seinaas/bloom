@@ -1,19 +1,27 @@
 <template name='chatpage'>
+    <!--Sidebar contains server and channel bars-->
     <div class='sidebar'>
+        <!--Contains all servers-->
         <div class='server-bar'>
+            <!--Loops through servers the player is in and displays them-->
             <ul class='server-list'>
                 {{#each servers}}
                 {{> server}}
                 {{/each}}
             </ul>
+            <!--Button to create new server-->
             <div class='btn-new-server'>
                 <p>+</p>
             </div>
         </div>
+        <!--Contains all channels-->
         <div class='channel-bar'>
+            <!--Heading contains server name as well as edit server and add channel buttons-->
             <div class='channel-heading'>
+                <!--Takes server name from helper-->
                 <span class='channel-heading-name' title="{{currentServer}}">{{currentServer}}</span>
 
+                <!--Edit server button opens edit popup (only server name for now)-->
                 <button class="btn-edit-server">
                     <i class="mdi mdi-pencil edit-server-popup-open"></i>
                     <span class="popup" id="edit-server-popup">
@@ -27,6 +35,7 @@
                     </span>
                 </button>
 
+                <!--New channel button opens popup to create channel-->
                 <button class="btn-new-channel">
                     <i class="mdi mdi-plus new-channel-popup-open"></i>
                     <span class="popup" id="edit-channel-popup">
@@ -35,19 +44,22 @@
                         <form class="new-channel">
                             <label for="new-channel-name">Channel Name:</label>
                             <input type='text' id='new-channel-name' class="new-channel-name" name='new-channel-name'
-                                autocomplete="off" placeholder="New Channel">
+                                autocomplete="off" placeholder="{{currentChannel}}">
                             <input type='submit' name='submit-new-channel' class="new-channel-name" text="Create">
                         </form>
                     </span>
                 </button>
 
             </div>
+
+            <!--Displays all channels in current server-->
             <ul class='channel-list'>
                 {{#each channels}}
                 {{> channel}}
                 {{/each}}
             </ul>
 
+            <!--Placeholder form to add user to current server TO CHANGE-->
             <form class="add-user">
                     <input type='text' id='add-user-name' name='add-user-name'
                         autocomplete="off" placeholder="New User">
@@ -56,6 +68,7 @@
         </div>
     </div>
 
+    <!--Animated button to open menubar-->
     <div class="btn-menu" id="nav-icon">
         <span></span>
         <span></span>
@@ -63,6 +76,7 @@
         <span></span>
     </div>
 
+    <!--Menubar contains bloom logo + differrent sections (to update)-->
     <div class='menubar'>
         <span class="menu-logo"><img class="logo" src="images/bloom_logo.svg" alt="Bloom Logo">
             <h4 class="menu-logo-text">bloom.</h4>
@@ -71,11 +85,15 @@
         <button class='btn-logout'>logout</button>
     </div>
 
+    <!--Main chat section-->
     <div class='main-chat'>
+
+        <!--Chat heading displays current channel name + notification button-->
         <div class='chat-heading'>
             <i class="mdi mdi-message chat-icon"></i><span class="chat-heading-name"
                 title="{{currentChannel}}">{{currentChannel}}</span>
 
+            <!--Notification menu (EMPTY FOR NOW, TO CHANGE)-->
             <div class="notification-menu">
                 <button class='btn-notification-menu'>
                     <i class='mdi mdi-bell notification-menu-popup-open'></i>
@@ -88,7 +106,7 @@
             </div>
         </div>
         <div class='chat-body'>
-
+            <!--List all sent messages in current channel-->
             <ul class='media-list'>
                 <!-- message template -->
                 {{#each messages}}
@@ -97,6 +115,7 @@
             </ul>
 
         </div>
+        <!--Chat footer contains form for sending messages (OTHER FEATURES IN THE FUTURE)-->
         <div class='chat-footer'>
             {{#if currentUser}}
             {{#if inChannel}}
@@ -109,7 +128,7 @@
         </div>
     </div>
 
-    <!--OPEN WHEN CREATING SERVER TO PICK NAME-->
+    <!--Popup opens when creating new server-->
     <div class="new-server-overlay">
         <div class="new-server-card">
             <i class='mdi mdi-close close-new-server-card'></i>

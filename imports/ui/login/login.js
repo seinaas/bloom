@@ -9,6 +9,7 @@ import '../myPwdForm/myPwdForm.js';
 if (Meteor.isClient) {
     Template.login.events({
         'submit form': function(event) {
+            //login with email if email entered, login with username if username entered
             event.preventDefault();
             let emailVar = event.target.email.value;
             let passwordVar = event.target.password.value;
@@ -22,6 +23,7 @@ if (Meteor.isClient) {
                 Meteor.loginWithPassword(usernameVar,passwordVar);
             }
         },
+        //if clicked on no account button, go to signup page
         'click #at-signUp': function(event) {
             FlowRouter.go('signup');
         } 

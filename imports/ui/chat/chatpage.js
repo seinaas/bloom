@@ -17,20 +17,22 @@ if (Meteor.isClient) {
     Template.chatpage.helpers({
         //helpers = {{helper-name}} --> html
         messages() {
-            //return collection messages
+            //return messages collection
             return Messages.find();
         },
         channels() {
-            //return collection channels
+            //return channels collection
             return Channels.find();
         },
         servers() {
+            //return servers collection
             return Servers.find();
         },
         isOwner() {
             return this.owner === Meteor.userId();
         },
         currentServer() {
+            //finds server with _id stored in session and returns its name
             if (Servers.find({}).fetch().length > 0) {
                 let server = Servers.findOne({ _id: Session.get("server") });
                 let name = server.name;
@@ -40,6 +42,7 @@ if (Meteor.isClient) {
 
         },
         currentChannel() {
+            //finds channel with _id stored in session and return channel name
             if (Channels.find({}).fetch().length > 0) {
                 let channel = Channels.findOne({ _id: Session.get("channel") });
                 if (typeof channel !== "undefined") {
@@ -50,6 +53,7 @@ if (Meteor.isClient) {
             return Session.get('channelName');
         },
         inChannel() {
+            //TO MODIFY
             if (!Channels.find({}).fetch()) {
                 return false;
             }
@@ -119,64 +123,72 @@ if (Meteor.isClient) {
         },
         //SERVER
         'click .btn-new-server': function (e) {
+            //show new server overlay
             let element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.add('visible');
         },
         'click .mdi.mdi-close.close-new-server-card': function (e) {
+            //close new server overlay
             element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.remove('visible');
             e.stopImmediatePropagation();
         },
         'submit .new-server': function (e) {
+            //create new server
             e.preventDefault();
 
             const text = document.getElementsByClassName('servername')[0].value;
             let userList = [Meteor.user()];
 
             if (text != "") {
+                //add server to collection
                 Servers.insert({
                     name: text,
                     userList: userList,
                 });
 
+                //get server
                 let server = Servers.findOne({ name: text });
 
+                //update server collection for current user to display new server
                 Meteor.call('updateServer', Meteor.userId(), server._id, (error,result) => {});
 
+                //join created server
                 Session.setPersistent('server', server._id);
 
+                //insert general channel in new server
                 Channels.insert({
                     name: 'general',
                     server: server._id,
                 })
 
+
             }
 
             
-
+            //close overlay
             let element = document.getElementsByClassName("new-server-overlay")[0];
             element.classList.remove('visible');
         },
         'click .edit-server-popup-open': function (e) {
-            let openPopups = document.getElementsByClassName('show');
-            for (i=0;i<openPopups.length;i++) {
-                openPopups[i].classList.remove('show');
-            }
+            closePopups();
 
+            //open edit server popup
             var popup = document.getElementById('edit-server-popup');
             popup.classList.add("show");
         },
         'click .notification-menu-popup-open': function (e) {
+            closePopups();
+
+            //open notification menu popup
             var popup = document.getElementById('notification-menu-popup');
             popup.classList.add("show");
         },
         //CHANNEL
         'click .new-channel-popup-open': function (e) {
-            let openPopups = document.getElementsByClassName('show');
-            for (i=0;i<openPopups.length;i++) {
-                openPopups[i].classList.remove('show');
-            }
+            closePopups();
 
+            //open new channel popup
             let popup = document.getElementById('edit-channel-popup');
             popup.classList.add("show");
         },
@@ -185,6 +197,7 @@ if (Meteor.isClient) {
 
             const text = document.getElementsByClassName('new-channel-name')[0].value;
 
+            //create new channel with text taken from input
             if (text !== "") {
                 Channels.insert({
                     name: text,
@@ -193,6 +206,7 @@ if (Meteor.isClient) {
             }
         },
         'mouseleave .channel-heading': function(e) {
+            //close channel heading popups
             let openPopups = document.querySelectorAll('.channel-heading, .show');
             for (i=0;i<openPopups.length;i++) {
                 openPopups[i].classList.remove('show');
@@ -200,6 +214,7 @@ if (Meteor.isClient) {
         },
         //MENU
         'click .btn-menu': function (e) {
+            //extend menu and animate menu button once clicked
             var menubar = document.getElementsByClassName('menubar')[0];
             menubar.classList.toggle("menu-extended");
             var navicon = document.getElementById('nav-icon');
@@ -207,6 +222,7 @@ if (Meteor.isClient) {
         },
         //LOGOUT
         'click .btn-logout': function (e) {
+            //logout user and redirect to login page
             e.preventDefault();
             FlowRouter.go('login');
             AccountsTemplates.logout();
@@ -214,14 +230,24 @@ if (Meteor.isClient) {
     });
 
     Template.message.onRendered(function () {
+        //if autoScrolling is active, scroll to bottom once message created
         if (autoScrollingIsActive) {
             scrollToBottom(250);
         }
     });
 
     scrollToBottom = function scrollToBottom(duration) {
+        //scroll to bottom of chat page
         var messageWindow = $(".chat-body");
         var scrollHeight = messageWindow.prop("scrollHeight");
         messageWindow.stop().animate({ scrollTop: scrollHeight }, duration || 0);
     };
+
+    function closePopups() {
+        //close all open popups
+        let openPopups = document.getElementsByClassName('show');
+        for (i=0;i<openPopups.length;i++) {
+            openPopups[i].classList.remove('show');
+        }
+    }
 }

@@ -4,6 +4,7 @@ import './server.html';
 
 if (Meteor.isClient) {
     Template.server.events({
+        //select server once clicked
         'click .server': function (e) {
             console.log(this);
             Session.setPersistent('server', this._id);
@@ -12,6 +13,7 @@ if (Meteor.isClient) {
 
     Template.server.helpers({
         active() {
+            //add class to selected server
             if (Session.get('server') === this._id) {
                 return 'selected-server';
             } else {

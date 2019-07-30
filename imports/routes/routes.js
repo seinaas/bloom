@@ -1,18 +1,21 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Tracker } from 'meteor/tracker';
 
+//Return to login page if not logged in
 function isNotLoggedIn(context, redirect) {
     if (!Meteor.user() && !Meteor.loggingIn()) {
         redirect('/login');
     }
 }
 
+//Go to chat page if logged in
 function isLoggedIn(context, redirect) {
     if (Meteor.user() || Meteor.loggingIn()) {
         redirect('/chat');
     }
 }
 
+//Go to verify page if email is not verified
 function isNotVerified(context, redirect) {
     Tracker.autorun(() => {
         if (typeof Meteor.user() !== 'undefined') {
@@ -23,6 +26,7 @@ function isNotVerified(context, redirect) {
     });
 }
 
+//Go to chat page if email is verified
 function isVerified(context, redirect) {
     Tracker.autorun(() => {
         if (typeof Meteor.user() !== 'undefined') {
@@ -33,14 +37,17 @@ function isVerified(context, redirect) {
     });
 }
 
+//Run isNotLoggedIn function on every page except login and signup
 FlowRouter.triggers.enter([isNotLoggedIn], {
     except: ['login', 'signup']
 });
 
+//Run isNotVerified function on chat page
 FlowRouter.triggers.enter([isNotVerified], {
     only: ['chat']
 });
 
+//Run isVerified function on verify page
 FlowRouter.triggers.enter([isVerified], {
     only: ['verify']
 });
@@ -49,6 +56,7 @@ FlowRouter.triggers.enter([isVerified], {
     only: ['login', 'signup']
 });*/
 
+//Chat page
 FlowRouter.route('/chat', {
     name: 'chat',
     action() {
@@ -56,6 +64,7 @@ FlowRouter.route('/chat', {
     }
 });
 
+//Login page
 FlowRouter.route('/login', {
     name: 'login',
     action() {
@@ -63,6 +72,7 @@ FlowRouter.route('/login', {
     }
 });
 
+//Signup page
 FlowRouter.route('/signup', {
     name: 'signup',
     action() {
@@ -70,6 +80,7 @@ FlowRouter.route('/signup', {
     }
 });
 
+//Verify page
 FlowRouter.route('/verify', {
     name: 'verify',
     action() {
@@ -77,6 +88,7 @@ FlowRouter.route('/verify', {
     }
 })
 
+//Verify page after verification
 FlowRouter.route('/verify-email/:token', {
     name: 'verify-email',
     action(params) {
@@ -86,6 +98,7 @@ FlowRouter.route('/verify-email/:token', {
     }
 })
 
+//404 page (empty template)
 FlowRouter.route('*', {
     action() {
         // Show 404 error page

@@ -1,6 +1,7 @@
 <template name="signup">
     <div class='login-bg'>
         <div class="login-container">
+            <!--Show logged in template if logged in, otherwise show sign up template--> 
         {{#if currentUser}}
         {{> loggedin}}
         {{else}}

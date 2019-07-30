@@ -7,11 +7,13 @@ import linkifyStr from 'linkifyjs/string';
 
 Template.message.helpers({
     displayPicture() {
+        //user profile picture
         var image = Template.instance().image.get();
         console.log(image);
         return image;
     },
     message() {
+        //pass user input through linkify then display
         const str = this.text;
         const finalText = linkifyStr(str, {className: 'link'});
         return finalText;

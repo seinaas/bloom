@@ -7,6 +7,7 @@ import '../myAtForm/myAtForm.js';
 
 if (Meteor.isClient) {
     Template.signup.events({
+        //if clicked on already have an account button, go to login page
         'click #at-signIn': function(event) {
             FlowRouter.go('login');
         } 
